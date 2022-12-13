@@ -15,9 +15,9 @@
     <hr>
     <form method="post">
         {% csrf_token %}
-        <input type="text" name="name" placeholder="Enter Name"><br><br>
-        <input type="email" name="email" placeholder="Enter an email"><br><br>
-        <input type="date" name="dob"><br><br>
+        <input type="text" name="name" value="{{cid.name}}" placeholder="Enter Name"><br><br>
+        <input type="email" name="email" value="{{cid.email}}" placeholder="Enter an email"><br><br>
+        <input type="date" name="dob" value="{{cid.dob|date:'Y-m-d'}}"><br><br>
         <textarea placeholder="Address" name="address"></textarea><br><br>
         <input type="submit" value="Update">
     </form>

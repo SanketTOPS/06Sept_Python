@@ -5,6 +5,6 @@ from myapp import views
 urlpatterns = [
    path('',views.index),
    path('showdata/',views.showdata,name='showdata'),
-   path('updatedata/',views.updatedata),
+   path('updatedata/<int:cid>',views.updatedata),
    path('deletedata/<int:cid>/',views.deletedata),
 ]
