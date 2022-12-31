@@ -62,7 +62,7 @@
                           {{user}}
                         </button>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Update Profile</a></li>
+                          <li><a class="dropdown-item" href="/updateprofile">Update Profile</a></li>
                           <li><a class="dropdown-item" href="/userlogout">Logout</a></li>
                         </ul>
                       </div>
@@ -205,6 +205,36 @@
         </div>
     </div>
     <!-- Signup Modal End -->
+
+    <!-- Notes Form Start -->
+    <div class="container my-5">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Query Title</label>
+                <input type="text" name="title" class="form-control" id="exampleFormControlInput1" >
+              </div>
+              <select class="form-select form-select-lg mb-3" name="cate" aria-label=".form-select-lg example">
+                <option selected>Select any one option</option>
+                <option>Core Python</option>
+                <option>Python with Django</option>
+                <option>Android</option>
+                <option>iOS</option>
+                <option>PHP</option>
+                <option>Other</option>
+              </select>
+              <div class="mb-3">
+                <label for="formFile" class="form-label">Upload your file</label>
+                <input class="form-control" name="files" type="file" id="formFile">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Comments</label>
+                <textarea class="form-control" name="comments" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg">Submit Post</button>
+        </form>
+    </div>
+    <!-- Notes Form End -->
 </body>
 
 </html>

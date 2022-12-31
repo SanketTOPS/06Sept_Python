@@ -6,4 +6,5 @@ urlpatterns = [
     path('',views.index),
     path('notes/',views.notes,name='notes'),
     path('userlogout/',views.userlogout),
+    path('updateprofile/',views.updateprofile),
 ]
