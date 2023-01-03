@@ -60,3 +60,9 @@ def updateprofile(request):
         else:
             print(updateuser.errors)
     return render(request,'updateprofile.html',{'user':user,'cuser':usersignup.objects.get(id=uid)})
+
+def about(request):
+    return render(request,'about.html')
+
+def contact(request):
+    return render(request,'contact.html')
