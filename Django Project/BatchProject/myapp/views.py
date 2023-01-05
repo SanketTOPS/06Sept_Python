@@ -2,17 +2,26 @@ from django.shortcuts import render,redirect
 from .forms import signupForm,notesForm
 from .models import usersignup
 from django.contrib.auth import logout
+from django.contrib import messages
 
 # Create your views here.
 
 def index(request):
     if request.method=='POST': #root
         if request.POST.get('signup')=='signup':
+            username=""
             newuser=signupForm(request.POST)
             if newuser.is_valid():
-                newuser.save()
-                print("User created successfully!")
-                return redirect('notes')
+                username=newuser.cleaned_data.get('username')
+                try:
+                    un=usersignup.objects.get(username=username)
+                    print("Username is already exists!")
+                    messages.error(request,"Username is already exists!")
+                except usersignup.DoesNotExist:
+                    newuser.save()
+                    print("User created successfully!")
+                    messages.success(request,"User created successfully!")
+                    return redirect('notes')
             else:
                 print(newuser.errors)
         elif request.POST.get('login')=='login':
@@ -38,6 +47,7 @@ def notes(request):
         if mynote.is_valid():
             mynote.save()
             print("Your notes has been uploaded!")
+            messages.success(request,"Your notes has been uploaded!")
         else:
             print(mynote.errors)
     return render(request,'notes.html',{'user':user})
